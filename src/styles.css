@@ -437,26 +437,26 @@ a {
 
 .planet-dossier {
   position: absolute;
-  top: clamp(72px, 8.8vh, 104px);
-  right: clamp(36px, 4.8vw, 82px);
-  bottom: 54px;
+  top: clamp(86px, 9vh, 110px);
+  right: clamp(18px, 2vw, 32px);
+  bottom: 52px;
   z-index: 4;
   display: grid;
   grid-template-rows: minmax(0, 1fr);
-  width: clamp(380px, 28vw, 468px);
+  width: clamp(340px, 21vw, 390px);
   border: 1px solid rgba(139, 199, 218, 0.34);
-  border-radius: 42px;
+  border-radius: 34px;
   background:
     radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--planet-accent) 22%, transparent), transparent 28%),
     radial-gradient(circle at 0% 28%, rgba(80, 179, 255, 0.16), transparent 42%),
     linear-gradient(155deg, rgba(12, 34, 52, 0.78), rgba(3, 12, 22, 0.95) 48%, rgba(1, 6, 14, 0.9));
-  padding: 26px;
+  padding: 20px;
   max-height: none;
   overflow: visible;
   box-shadow:
     0 0 0 1px rgba(130, 215, 255, 0.06),
-    -28px 0 80px rgba(29, 132, 224, 0.18),
-    0 24px 90px rgba(0, 0, 0, 0.42),
+    -18px 0 58px rgba(29, 132, 224, 0.15),
+    0 20px 70px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
     inset 0 0 42px rgba(83, 169, 255, 0.08);
   backdrop-filter: blur(24px) saturate(1.16);
@@ -482,8 +482,8 @@ a {
 
 .planet-dossier::before {
   position: absolute;
-  top: 26px;
-  bottom: 26px;
+  top: 22px;
+  bottom: 22px;
   left: -1px;
   width: 1px;
   border: 0;
@@ -501,19 +501,19 @@ a {
 
 .planet-dossier::after {
   position: absolute;
-  top: 42px;
-  right: 42px;
-  width: 34px;
-  height: 34px;
+  top: 32px;
+  right: 32px;
+  width: 28px;
+  height: 28px;
   background:
-    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 0 / 13px 1px no-repeat,
-    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 0 / 1px 13px no-repeat,
-    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 0 / 13px 1px no-repeat,
-    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 0 / 1px 13px no-repeat,
-    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 100% / 13px 1px no-repeat,
-    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 100% / 1px 13px no-repeat,
-    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 100% / 13px 1px no-repeat,
-    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 100% / 1px 13px no-repeat;
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 0 / 11px 1px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 0 / 1px 11px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 0 / 11px 1px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 0 / 1px 11px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 100% / 11px 1px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 100% / 1px 11px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 100% / 11px 1px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 100% / 1px 11px no-repeat;
   content: "";
   opacity: 0.62;
   pointer-events: none;
@@ -600,11 +600,11 @@ a {
   overflow: auto;
   opacity: 1;
   border: 1px solid rgba(139, 199, 218, 0.12);
-  border-radius: 30px;
+  border-radius: 26px;
   background:
     radial-gradient(circle at 78% 8%, color-mix(in srgb, var(--planet-accent) 13%, transparent), transparent 28%),
     linear-gradient(180deg, rgba(2, 14, 27, 0.24), rgba(1, 7, 15, 0.48));
-  padding: 34px 36px 28px;
+  padding: 28px 28px 22px;
   box-shadow:
     inset 0 0 0 1px rgba(130, 215, 255, 0.035),
     inset 0 0 56px rgba(72, 164, 255, 0.055);
@@ -627,7 +627,7 @@ a {
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  transform: translateX(calc(100% + clamp(36px, 4.8vw, 82px) - 4px));
+  transform: translateX(calc(100% + clamp(18px, 2vw, 32px) - 4px));
 }
 
 .planet-dossier.is-collapsed::before {
@@ -683,8 +683,8 @@ a {
   position: relative;
   padding-top: 0;
   border-bottom: 1px solid rgba(139, 199, 218, 0.14);
-  min-height: 168px;
-  padding-bottom: 22px;
+  min-height: 142px;
+  padding-bottom: 18px;
   animation: panelContentReveal 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -704,7 +704,7 @@ a {
   position: absolute;
   top: 4px;
   right: -2px;
-  width: clamp(112px, 8.7vw, 142px);
+  width: clamp(92px, 6.8vw, 118px);
   aspect-ratio: 1;
   border-radius: 50%;
   background-image: url("/assets/planet-sprite-sheet-v3-ui.webp");
@@ -737,16 +737,16 @@ a {
 .dossier-section h3 {
   color: var(--faint);
   font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .dossier-header h2 {
-  margin: 24px 0 0;
+  margin: 18px 0 0;
   font-family: "Noto Serif SC", "Songti SC", serif;
-  font-size: clamp(3.05rem, 3.9vw, 4.35rem);
+  font-size: clamp(2.5rem, 2.8vw, 3.35rem);
   font-weight: 800;
   line-height: 1;
   text-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);
@@ -754,26 +754,26 @@ a {
 
 .dossier-header strong {
   display: block;
-  margin-top: 12px;
+  margin-top: 10px;
   color: var(--cyan);
   font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
-  font-size: 1.02rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.3em;
   text-shadow: 0 0 18px rgba(130, 215, 255, 0.28);
 }
 
 .dossier-header p {
-  margin: 14px 0 0;
+  margin: 11px 0 0;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.88rem;
   line-height: 1.38;
 }
 
 .dossier-section {
   display: grid;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 8px;
+  margin-top: 16px;
   animation: panelContentReveal 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -784,16 +784,16 @@ a {
 .dossier-section h3 {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   margin: 0;
   color: rgba(120, 213, 255, 0.95);
-  font-size: 0.94rem;
+  font-size: 0.84rem;
   text-shadow: 0 0 18px rgba(130, 215, 255, 0.2);
 }
 
 .dossier-section h3 svg {
-  width: 19px;
-  height: 19px;
+  width: 17px;
+  height: 17px;
   filter: drop-shadow(0 0 10px rgba(130, 215, 255, 0.32));
 }
 
@@ -818,10 +818,10 @@ a {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  min-height: 34px;
+  min-height: 30px;
   border-bottom: 1px solid rgba(139, 199, 218, 0.18);
-  gap: 12px;
-  padding: 0 28px;
+  gap: 10px;
+  padding: 0 24px;
   background: transparent;
 }
 
@@ -858,7 +858,7 @@ a {
 .metric-table dt,
 .status-table dt {
   color: rgba(209, 226, 237, 0.62);
-  font-size: 0.84rem;
+  font-size: 0.76rem;
   font-weight: 700;
 }
 
@@ -867,7 +867,7 @@ a {
   margin: 0;
   color: rgba(255, 255, 255, 0.96);
   font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
-  font-size: 0.94rem;
+  font-size: 0.84rem;
   font-weight: 600;
   text-shadow: 0 0 16px rgba(255, 255, 255, 0.12);
 }
@@ -878,7 +878,7 @@ a {
   border-left: 2px solid var(--cyan);
   padding-left: 12px;
   color: rgba(244, 235, 220, 0.72);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   line-height: 1.65;
 }
 
@@ -887,15 +887,15 @@ a {
   align-items: center;
   justify-content: flex-start;
   width: max-content;
-  min-height: 28px;
+  min-height: 26px;
   gap: 11px;
-  margin-top: 22px;
+  margin-top: 18px;
   border: 0;
   border-radius: 0;
   background: transparent;
   color: rgba(120, 213, 255, 0.96);
   font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   box-shadow: none;
@@ -1213,53 +1213,53 @@ a {
 
 .orbital-cinema.is-planet-view .planet-dossier {
   border: 1px solid rgba(139, 199, 218, 0.34);
-  border-radius: 42px;
+  border-radius: 34px;
   background:
     radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--planet-accent) 22%, transparent), transparent 28%),
     radial-gradient(circle at 0% 28%, rgba(80, 179, 255, 0.16), transparent 42%),
     linear-gradient(155deg, rgba(12, 34, 52, 0.78), rgba(3, 12, 22, 0.95) 48%, rgba(1, 6, 14, 0.9));
-  width: clamp(380px, 28vw, 468px);
-  padding: 26px;
+  width: clamp(340px, 21vw, 390px);
+  padding: 20px;
   box-shadow:
     0 0 0 1px rgba(130, 215, 255, 0.06),
-    -28px 0 80px rgba(29, 132, 224, 0.18),
-    0 24px 90px rgba(0, 0, 0, 0.42),
+    -18px 0 58px rgba(29, 132, 224, 0.15),
+    0 20px 70px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
     inset 0 0 42px rgba(83, 169, 255, 0.08);
   transform: translateX(0);
 }
 
 .orbital-cinema.is-planet-view .dossier-header {
-  padding-bottom: 22px;
+  padding-bottom: 18px;
 }
 
 .orbital-cinema.is-planet-view .dossier-header h2 {
-  font-size: clamp(3.05rem, 3.9vw, 4.35rem);
+  font-size: clamp(2.5rem, 2.8vw, 3.35rem);
 }
 
 .orbital-cinema.is-planet-view .dossier-header p {
-  font-size: 0.94rem;
+  font-size: 0.86rem;
 }
 
 .orbital-cinema.is-planet-view .metric-table dt,
 .orbital-cinema.is-planet-view .status-table dt {
-  font-size: 0.84rem;
+  font-size: 0.76rem;
 }
 
 .orbital-cinema.is-planet-view .metric-table dd,
 .orbital-cinema.is-planet-view .status-table dd {
-  font-size: 0.94rem;
+  font-size: 0.84rem;
 }
 
 .orbital-cinema.is-planet-view .metric-table div,
 .orbital-cinema.is-planet-view .status-table div {
-  min-height: 34px;
-  padding: 0 28px;
+  min-height: 30px;
+  padding: 0 24px;
 }
 
 .orbital-cinema.is-planet-view .dossier-cta {
   min-height: 30px;
-  margin-top: 22px;
+  margin-top: 18px;
 }
 
 .orbital-cinema.is-planet-view .planet-dossier::before {
@@ -1273,7 +1273,7 @@ a {
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  transform: translateX(calc(100% + clamp(36px, 4.8vw, 82px) - 4px));
+  transform: translateX(calc(100% + clamp(18px, 2vw, 32px) - 4px));
 }
 
 .orbital-cinema.is-planet-view .planet-dossier.is-collapsed::before {
