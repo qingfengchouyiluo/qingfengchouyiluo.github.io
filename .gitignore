@@ -1,0 +1,8 @@
+node_modules
+dist
+.vite
+.codex-tmp
+.DS_Store
+*.local
+output
+outputs

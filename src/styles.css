@@ -1,0 +1,2084 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;700;900&display=swap");
+
+:root {
+  color-scheme: dark;
+  --void: #03070b;
+  --void-soft: #061018;
+  --ink: #f4ebdc;
+  --muted: rgba(244, 235, 220, 0.68);
+  --faint: rgba(244, 235, 220, 0.42);
+  --line: rgba(139, 199, 218, 0.18);
+  --line-strong: rgba(139, 199, 218, 0.42);
+  --amber: #e4aa58;
+  --amber-soft: rgba(228, 170, 88, 0.28);
+  --cyan: #82d7ff;
+  --cyan-soft: rgba(130, 215, 255, 0.24);
+  --panel: rgba(4, 13, 19, 0.72);
+  --panel-strong: rgba(4, 13, 19, 0.9);
+  --max: 1520px;
+  font-family: "Noto Sans SC", "Microsoft YaHei UI", "PingFang SC", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--void);
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--void);
+  color: var(--ink);
+}
+
+button,
+input,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.orbital-cinema {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 62% 48%, rgba(255, 158, 50, 0.12), transparent 26rem),
+    radial-gradient(ellipse at 80% 26%, rgba(76, 184, 216, 0.1), transparent 30rem),
+    linear-gradient(115deg, rgba(1, 4, 8, 0.98) 0%, rgba(4, 12, 16, 0.75) 48%, rgba(1, 5, 10, 0.97) 100%),
+    #010409;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.orbital-cinema * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.orbital-cinema.is-planet-view {
+  cursor: grab;
+}
+
+.orbital-cinema.is-planet-view:active {
+  cursor: grabbing;
+}
+
+.orbital-cinema::after {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background:
+    radial-gradient(circle at 52% 46%, rgba(244, 251, 255, 0.26), transparent 11rem),
+    linear-gradient(105deg, transparent 0%, rgba(130, 215, 255, 0.2) 46%, rgba(255, 207, 124, 0.24) 50%, transparent 56%);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+}
+
+.orbital-cinema.is-planet-view::after {
+  animation: focusLensSweep 960ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.deep-space-field,
+.cinema-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.deep-space-field {
+  background:
+    radial-gradient(ellipse at 58% 48%, rgba(255, 178, 68, 0.16), transparent 19rem),
+    linear-gradient(90deg, rgba(1, 4, 10, 0.68) 0%, rgba(1, 4, 10, 0.22) 45%, rgba(1, 4, 10, 0.56) 100%),
+    linear-gradient(180deg, rgba(1, 4, 10, 0.06) 0%, rgba(1, 4, 10, 0.34) 72%, rgba(1, 4, 10, 0.78) 100%),
+    url("/assets/milky-way-panorama-b.webp"),
+    #01040a;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  filter: saturate(1.08) contrast(1.08) brightness(0.72);
+}
+
+.deep-space-field::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(255, 214, 151, 0.72) 0 1px, transparent 1.35px),
+    radial-gradient(circle, rgba(121, 225, 230, 0.46) 0 0.9px, transparent 1.22px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.34) 0 0.7px, transparent 1.08px);
+  background-position:
+    42px 34px,
+    116px 92px,
+    76px 158px,
+    20px 196px;
+  background-size:
+    150px 150px,
+    230px 230px,
+    112px 112px,
+    72px 72px;
+  content: "";
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+.deep-space-field::after {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 55% 47%, rgba(255, 183, 73, 0.22), rgba(255, 138, 48, 0.12) 18%, rgba(66, 171, 190, 0.05) 36%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(1, 4, 10, 0.42) 82%);
+  content: "";
+  filter: saturate(1.18) contrast(1.08);
+  opacity: 0.82;
+}
+
+.cinema-vignette {
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(1, 4, 10, 0.76) 0%, rgba(1, 4, 10, 0.22) 25%, transparent 58%, rgba(1, 4, 10, 0.12) 100%),
+    linear-gradient(180deg, rgba(1, 4, 10, 0.18) 0%, transparent 36%, rgba(1, 4, 10, 0.38) 84%, rgba(1, 4, 10, 0.88) 100%);
+}
+
+.system-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  min-height: 100%;
+  opacity: 1;
+  mix-blend-mode: normal;
+  pointer-events: auto;
+  transition: opacity 600ms ease, filter 600ms ease;
+}
+
+.system-scene canvas {
+  outline: none;
+}
+
+.system-scene.is-focus-mode {
+  z-index: 3;
+  opacity: 1;
+  filter: saturate(1.16) contrast(1.1) brightness(1.05);
+}
+
+.system-scene-fallback {
+  background:
+    radial-gradient(circle at 42% 48%, rgba(228, 170, 88, 0.32), transparent 9rem),
+    radial-gradient(circle at 62% 40%, rgba(130, 215, 255, 0.18), transparent 19rem);
+}
+
+.cinema-topbar {
+  position: absolute;
+  top: 30px;
+  right: clamp(24px, 3vw, 52px);
+  left: clamp(24px, 3vw, 52px);
+  z-index: 5;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+}
+
+.cinema-mark {
+  display: inline-flex;
+  align-items: center;
+  min-width: 230px;
+  gap: 16px;
+}
+
+.cinema-mark span {
+  position: relative;
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border: 1px solid rgba(228, 170, 88, 0.68);
+  border-radius: 50%;
+  background: rgba(228, 170, 88, 0.07);
+  box-shadow: 0 0 34px rgba(228, 170, 88, 0.18);
+}
+
+.cinema-mark span::before,
+.cinema-mark span::after {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+}
+
+.cinema-mark span::before {
+  width: 15px;
+  height: 15px;
+  border: 4px solid var(--amber);
+}
+
+.cinema-mark span::after {
+  width: 72px;
+  height: 28px;
+  border: 1px solid rgba(228, 170, 88, 0.7);
+  transform: rotate(-28deg);
+}
+
+.cinema-mark strong {
+  display: grid;
+  gap: 4px;
+  color: #e8bf75;
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cinema-mark em {
+  color: #f0c47b;
+  font-style: normal;
+  letter-spacing: 0.18em;
+}
+
+.cinema-mark-mobile-title {
+  display: none;
+  color: #e8bf75;
+  font: inherit;
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+.topbar-readout {
+  display: grid;
+  justify-items: center;
+  color: var(--faint);
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.topbar-readout strong {
+  margin-top: 4px;
+  color: rgba(130, 215, 255, 0.76);
+  font-weight: 600;
+}
+
+.ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  width: 48px;
+  min-height: 48px;
+  gap: 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(4, 13, 19, 0.58);
+  padding: 0;
+  color: rgba(244, 235, 220, 0.82);
+  font-size: 0;
+  font-weight: 700;
+  justify-content: center;
+  backdrop-filter: blur(18px);
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.ghost-button:hover {
+  border-color: rgba(130, 215, 255, 0.48);
+  background: rgba(130, 215, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.cinema-copy {
+  position: absolute;
+  top: 32vh;
+  left: clamp(48px, 5vw, 96px);
+  z-index: 4;
+  width: min(520px, 34vw);
+  animation: copyReveal 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.cinema-eyebrow {
+  display: none;
+  margin: 0;
+  color: #e8b76c;
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.cinema-copy h1 {
+  margin: 0;
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: clamp(2.65rem, 2.95vw, 3.85rem);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: 0;
+  text-shadow: 0 16px 56px rgba(0, 0, 0, 0.44);
+  text-wrap: balance;
+}
+
+.cinema-copy h1 span {
+  display: block;
+}
+
+.cinema-copy h1 span:first-child {
+  white-space: nowrap;
+}
+
+.cinema-copy h1 span + span {
+  margin-top: 12px;
+  font-size: 0.34em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.title-rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 66px;
+  margin-top: 18px;
+}
+
+.title-rule i {
+  width: 48px;
+  height: 5px;
+  background:
+    repeating-linear-gradient(90deg, var(--amber) 0 5px, transparent 5px 11px);
+}
+
+.title-rule span {
+  display: none;
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(228, 170, 88, 0.78), transparent);
+}
+
+.cinema-lead {
+  display: none;
+  max-width: 390px;
+  margin: 42px 0 0;
+  color: rgba(244, 235, 220, 0.86);
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: clamp(1rem, 1.15vw, 1.18rem);
+  font-weight: 600;
+  line-height: 1.9;
+}
+
+.intro-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 34px;
+  border: 1px solid rgba(228, 170, 88, 0.36);
+  border-radius: 999px;
+  background: rgba(4, 13, 19, 0.42);
+  padding: 8px 14px 8px 8px;
+  backdrop-filter: blur(18px);
+}
+
+.play-button {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(228, 170, 88, 0.74);
+  border-radius: 50%;
+  background: rgba(228, 170, 88, 0.09);
+  color: #ffc778;
+  box-shadow: 0 0 28px rgba(228, 170, 88, 0.16);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.play-button:hover {
+  background: rgba(228, 170, 88, 0.18);
+  transform: scale(1.04);
+}
+
+.intro-action div {
+  display: grid;
+  gap: 5px;
+}
+
+.intro-action strong {
+  color: rgba(244, 235, 220, 0.86);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.intro-action span {
+  color: var(--faint);
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.planet-dossier {
+  position: absolute;
+  top: clamp(72px, 8.8vh, 104px);
+  right: clamp(36px, 4.8vw, 82px);
+  bottom: 54px;
+  z-index: 4;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  width: clamp(380px, 28vw, 468px);
+  border: 1px solid rgba(139, 199, 218, 0.34);
+  border-radius: 42px;
+  background:
+    radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--planet-accent) 22%, transparent), transparent 28%),
+    radial-gradient(circle at 0% 28%, rgba(80, 179, 255, 0.16), transparent 42%),
+    linear-gradient(155deg, rgba(12, 34, 52, 0.78), rgba(3, 12, 22, 0.95) 48%, rgba(1, 6, 14, 0.9));
+  padding: 26px;
+  max-height: none;
+  overflow: visible;
+  box-shadow:
+    0 0 0 1px rgba(130, 215, 255, 0.06),
+    -28px 0 80px rgba(29, 132, 224, 0.18),
+    0 24px 90px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 42px rgba(83, 169, 255, 0.08);
+  backdrop-filter: blur(24px) saturate(1.16);
+  -webkit-backdrop-filter: blur(24px) saturate(1.16);
+  isolation: isolate;
+  scrollbar-width: none;
+  transition:
+    visibility 520ms ease,
+    opacity 520ms ease,
+    transform 520ms ease,
+    border-color 520ms ease,
+    background 520ms ease,
+    width 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    height 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.orbital-cinema:not(.is-planet-view) .planet-dossier {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(30px);
+}
+
+.planet-dossier::before {
+  position: absolute;
+  top: 26px;
+  bottom: 26px;
+  left: -1px;
+  width: 1px;
+  border: 0;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, transparent, rgba(129, 212, 255, 0.88) 18%, rgba(224, 246, 255, 0.98) 52%, rgba(92, 190, 255, 0.82) 82%, transparent);
+  content: "";
+  opacity: 0.9;
+  pointer-events: none;
+  box-shadow:
+    0 0 20px rgba(93, 190, 255, 0.72),
+    0 0 48px rgba(93, 190, 255, 0.32);
+  animation: dossierGlassBreath 8s ease-in-out infinite;
+}
+
+.planet-dossier::after {
+  position: absolute;
+  top: 42px;
+  right: 42px;
+  width: 34px;
+  height: 34px;
+  background:
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 0 / 13px 1px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 0 / 1px 13px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 0 / 13px 1px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 0 / 1px 13px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 100% / 13px 1px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 0 100% / 1px 13px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 100% / 13px 1px no-repeat,
+    linear-gradient(rgba(130, 215, 255, 0.72) 0 0) 100% 100% / 1px 13px no-repeat;
+  content: "";
+  opacity: 0.62;
+  pointer-events: none;
+  filter: drop-shadow(0 0 12px rgba(130, 215, 255, 0.36));
+}
+
+.planet-dossier::-webkit-scrollbar {
+  display: none;
+}
+
+.dossier-collapse-toggle {
+  position: absolute;
+  top: 50%;
+  right: auto;
+  left: -48px;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  min-height: 126px;
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(86, 186, 255, 0.18), rgba(4, 20, 34, 0.7) 46%, rgba(8, 33, 52, 0.5)),
+    rgba(6, 18, 28, 0.68);
+  clip-path: polygon(100% 0, 100% 100%, 34% 80%, 0 66%, 0 34%, 34% 20%);
+  padding: 0;
+  color: rgba(155, 223, 255, 0.94);
+  font-size: 0.72rem;
+  font-weight: 800;
+  box-shadow:
+    inset 0 0 0 1px rgba(130, 215, 255, 0.28),
+    inset -10px 0 20px rgba(130, 215, 255, 0.1),
+    -8px 0 26px rgba(78, 174, 255, 0.2),
+    0 0 30px rgba(130, 215, 255, 0.22);
+  backdrop-filter: blur(16px) saturate(1.18);
+  -webkit-backdrop-filter: blur(16px) saturate(1.18);
+  filter: drop-shadow(-2px 0 12px rgba(92, 188, 229, 0.3));
+  transform: translateY(-50%);
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease, opacity 180ms ease;
+}
+
+.dossier-collapse-toggle::before {
+  position: relative;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 10px solid rgba(121, 218, 255, 0.96);
+  content: "";
+  filter: drop-shadow(0 0 10px rgba(121, 218, 255, 0.86));
+  transform: translateX(-2px);
+}
+
+.dossier-collapse-toggle svg {
+  display: none;
+}
+
+.dossier-collapse-toggle span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.dossier-collapse-toggle:hover {
+  background:
+    linear-gradient(180deg, rgba(123, 215, 255, 0.26), rgba(10, 36, 56, 0.72) 42%, rgba(5, 17, 28, 0.76)),
+    rgba(7, 25, 40, 0.72);
+  transform: translateY(-50%) translateX(-3px);
+}
+
+.dossier-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 0;
+  max-height: 100%;
+  overflow: auto;
+  opacity: 1;
+  border: 1px solid rgba(139, 199, 218, 0.12);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 78% 8%, color-mix(in srgb, var(--planet-accent) 13%, transparent), transparent 28%),
+    linear-gradient(180deg, rgba(2, 14, 27, 0.24), rgba(1, 7, 15, 0.48));
+  padding: 34px 36px 28px;
+  box-shadow:
+    inset 0 0 0 1px rgba(130, 215, 255, 0.035),
+    inset 0 0 56px rgba(72, 164, 255, 0.055);
+  scrollbar-width: none;
+  transition: opacity 240ms ease, transform 320ms ease, visibility 240ms ease;
+}
+
+.dossier-content::after {
+  display: none;
+}
+
+.dossier-content::-webkit-scrollbar {
+  display: none;
+}
+
+.planet-dossier.is-collapsed {
+  top: 24vh;
+  right: clamp(40px, 4vw, 76px);
+  bottom: auto;
+  width: 54px;
+  height: 178px;
+  padding: 0;
+  border: 0;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  transform: none;
+}
+
+.planet-dossier.is-collapsed::before {
+  inset: 2px auto 2px 18px;
+  width: 2px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, transparent, rgba(92, 190, 255, 0.48), rgba(202, 240, 255, 0.76), rgba(92, 190, 255, 0.52), transparent);
+  opacity: 0.82;
+  animation: none;
+  box-shadow: 0 0 22px rgba(92, 190, 255, 0.42);
+}
+
+.planet-dossier.is-collapsed::after {
+  top: 48px;
+  right: 10px;
+  bottom: auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--planet-accent) 60%, #82d7ff);
+  box-shadow:
+    0 0 14px color-mix(in srgb, var(--planet-accent) 42%, transparent),
+    0 0 28px rgba(130, 215, 255, 0.22);
+  opacity: 0.78;
+}
+
+.planet-dossier.is-collapsed .dossier-collapse-toggle {
+  top: 50%;
+  right: auto;
+  left: 0;
+  width: 42px;
+  min-height: 112px;
+  padding: 0;
+  clip-path: polygon(100% 0, 100% 100%, 34% 80%, 0 66%, 0 34%, 34% 20%);
+  transform: translateY(-50%);
+}
+
+.planet-dossier.is-collapsed .dossier-collapse-toggle::before {
+  border-right: 0;
+  border-left: 6px solid rgba(255, 225, 164, 0.92);
+  transform: translateX(1px);
+}
+
+.planet-dossier.is-collapsed .dossier-content {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(12px);
+}
+
+.dossier-header {
+  position: relative;
+  padding-top: 0;
+  border-bottom: 1px solid rgba(139, 199, 218, 0.14);
+  min-height: 168px;
+  padding-bottom: 22px;
+  animation: panelContentReveal 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dossier-header::before {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 2px;
+  height: 28px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, transparent, rgba(235, 248, 255, 0.95), rgba(130, 215, 255, 0.44), transparent);
+  box-shadow: 0 0 16px rgba(130, 215, 255, 0.38);
+  content: "";
+}
+
+.dossier-planet-preview {
+  position: absolute;
+  top: 4px;
+  right: -2px;
+  width: clamp(112px, 8.7vw, 142px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-image: url("/assets/planet-sprite-sheet-v3-ui.webp");
+  background-position: var(--sprite-x) var(--sprite-y);
+  background-size: 400% 200%;
+  border-radius: 0;
+  filter: drop-shadow(0 0 24px color-mix(in srgb, var(--planet-accent) 58%, transparent));
+  mix-blend-mode: screen;
+}
+
+.dossier-planet-preview::before,
+.dossier-planet-preview::after {
+  position: absolute;
+  inset: -9px -18px;
+  border: 1px solid rgba(228, 170, 88, 0.44);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+  transform: rotate(-18deg) scaleX(1.38) scaleY(0.66);
+}
+
+.dossier-planet-preview::after {
+  inset: -5px -14px;
+  border-color: rgba(130, 215, 255, 0.18);
+  opacity: 0.7;
+  transform: rotate(-18deg) scaleX(1.22) scaleY(0.56);
+}
+
+.dossier-header span,
+.dossier-section h3 {
+  color: var(--faint);
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dossier-header h2 {
+  margin: 24px 0 0;
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: clamp(3.05rem, 3.9vw, 4.35rem);
+  font-weight: 800;
+  line-height: 1;
+  text-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dossier-header strong {
+  display: block;
+  margin-top: 12px;
+  color: var(--cyan);
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-shadow: 0 0 18px rgba(130, 215, 255, 0.28);
+}
+
+.dossier-header p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.38;
+}
+
+.dossier-section {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+  animation: panelContentReveal 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dossier-section + .dossier-section {
+  animation-delay: 60ms;
+}
+
+.dossier-section h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  color: rgba(120, 213, 255, 0.95);
+  font-size: 0.94rem;
+  text-shadow: 0 0 18px rgba(130, 215, 255, 0.2);
+}
+
+.dossier-section h3 svg {
+  width: 19px;
+  height: 19px;
+  filter: drop-shadow(0 0 10px rgba(130, 215, 255, 0.32));
+}
+
+.metric-table,
+.status-table {
+  display: grid;
+  margin: 0;
+  border: 1px solid rgba(130, 215, 255, 0.38);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(130, 215, 255, 0.08), transparent 52%),
+    linear-gradient(180deg, rgba(5, 18, 31, 0.54), rgba(2, 9, 17, 0.48));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+    inset 0 0 30px rgba(83, 169, 255, 0.045);
+  overflow: hidden;
+}
+
+.metric-table div,
+.status-table div {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  min-height: 34px;
+  border-bottom: 1px solid rgba(139, 199, 218, 0.18);
+  gap: 12px;
+  padding: 0 28px;
+  background: transparent;
+}
+
+.metric-table div::before,
+.metric-table div::after,
+.status-table div::before,
+.status-table div::after {
+  position: absolute;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(112, 210, 255, 0.95);
+  box-shadow: 0 0 10px rgba(112, 210, 255, 0.74);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.metric-table div::before,
+.status-table div::before {
+  left: 11px;
+}
+
+.metric-table div::after,
+.status-table div::after {
+  right: 11px;
+}
+
+.metric-table div:last-child,
+.status-table div:last-child {
+  border-bottom: 0;
+}
+
+.metric-table dt,
+.status-table dt {
+  color: rgba(209, 226, 237, 0.62);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.metric-table dd,
+.status-table dd {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.96);
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.12);
+}
+
+.planet-insight {
+  display: none;
+  margin: 18px 0 0;
+  border-left: 2px solid var(--cyan);
+  padding-left: 12px;
+  color: rgba(244, 235, 220, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.dossier-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: max-content;
+  min-height: 28px;
+  gap: 11px;
+  margin-top: 22px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(120, 213, 255, 0.96);
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  box-shadow: none;
+  animation: panelContentReveal 620ms 100ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.dossier-cta:hover {
+  color: rgba(255, 225, 164, 0.94);
+  transform: translateY(-1px);
+}
+
+.control-deck {
+  display: none;
+}
+
+.control-deck:hover,
+.control-deck:focus-within {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.mode-switch,
+.toggle-row,
+.speed-control {
+  display: grid;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(4, 13, 19, 0.62);
+  backdrop-filter: blur(18px);
+}
+
+.mode-switch {
+  grid-template-columns: repeat(3, 1fr);
+  overflow: hidden;
+}
+
+.mode-switch button,
+.toggle-row button {
+  min-height: 40px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.mode-switch button + button {
+  border-left: 1px solid var(--line);
+}
+
+.mode-switch button:hover,
+.mode-switch button.is-active,
+.toggle-row button:hover,
+.toggle-row button.is-active {
+  background: rgba(130, 215, 255, 0.1);
+  color: var(--ink);
+}
+
+.toggle-row {
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.toggle-row button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.toggle-row button + button {
+  border-left: 1px solid var(--line);
+}
+
+.speed-control {
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  min-height: 48px;
+  gap: 12px;
+  padding: 0 12px;
+}
+
+.speed-control span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.speed-control input {
+  width: 100%;
+  accent-color: var(--cyan);
+}
+
+.speed-control strong {
+  color: var(--cyan);
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 0.9rem;
+}
+
+.planet-console {
+  position: absolute;
+  right: clamp(30px, 3vw, 58px);
+  bottom: 16px;
+  left: clamp(30px, 3vw, 58px);
+  z-index: 5;
+  display: grid;
+  gap: 18px;
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.planet-strip {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  min-height: 76px;
+  border: 1px solid rgba(139, 199, 218, 0.24);
+  border-radius: 8px;
+  background: rgba(4, 13, 19, 0.7);
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+.planet-strip button {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "thumb name"
+    "thumb order";
+  align-content: center;
+  align-items: center;
+  gap: 2px 12px;
+  border-right: 1px solid rgba(139, 199, 218, 0.15);
+  background: transparent;
+  padding: 9px 16px;
+  text-align: left;
+  overflow: hidden;
+  transition: background 180ms ease, box-shadow 180ms ease;
+}
+
+.planet-strip button:last-child {
+  border-right: 0;
+}
+
+.planet-strip button::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--planet-accent);
+  content: "";
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.planet-strip button::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 0%, color-mix(in srgb, var(--planet-accent) 18%, transparent) 46%, transparent 62%);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+}
+
+.planet-strip button:hover,
+.planet-strip button.is-active {
+  background: rgba(130, 215, 255, 0.08);
+}
+
+.planet-strip button.is-active {
+  box-shadow:
+    inset 0 0 28px rgba(130, 215, 255, 0.14),
+    inset 0 0 0 1px color-mix(in srgb, var(--planet-accent) 26%, transparent);
+}
+
+.planet-strip button.is-active::before {
+  opacity: 1;
+}
+
+.planet-strip button.is-active::after {
+  animation: navLightSweep 960ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.planet-thumb {
+  grid-area: thumb;
+  width: 50px;
+  height: 50px;
+  background-image: url("/assets/planet-sprite-sheet-v3-ui.webp");
+  background-position: var(--sprite-x) var(--sprite-y);
+  background-size: 400% 200%;
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--planet-accent) 40%, transparent));
+  mix-blend-mode: screen;
+}
+
+.planet-strip button.is-sun .planet-thumb,
+.dossier-planet-preview.is-sun {
+  border-radius: 50%;
+  background-image: url("/assets/textures/sun.webp");
+  background-position: center;
+  background-size: cover;
+  filter:
+    drop-shadow(0 0 12px rgba(255, 186, 82, 0.74))
+    drop-shadow(0 0 28px rgba(255, 124, 41, 0.42));
+}
+
+.planet-strip strong {
+  grid-area: name;
+  color: rgba(244, 235, 220, 0.92);
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: clamp(1rem, 1.2vw, 1.36rem);
+  font-weight: 700;
+}
+
+.planet-strip small {
+  grid-area: order;
+  color: var(--faint);
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.console-hints {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: rgba(244, 235, 220, 0.58);
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: 0.94rem;
+}
+
+.console-hints button {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(228, 170, 88, 0.72);
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.console-hints button:hover {
+  border-color: rgba(228, 170, 88, 0.48);
+  color: #f1c680;
+}
+
+.console-hints span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.active-caption {
+  position: absolute;
+  right: 41vw;
+  bottom: 38vh;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(130, 215, 255, 0.8);
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 0 18px rgba(130, 215, 255, 0.44);
+  animation: captionSignal 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.mobile-orbit-radar {
+  display: none;
+}
+
+.focus-status {
+  position: absolute;
+  top: clamp(118px, 14vh, 150px);
+  left: 50%;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid color-mix(in srgb, var(--planet-accent) 54%, rgba(130, 215, 255, 0.22));
+  border-radius: 999px;
+  background: rgba(3, 10, 15, 0.62);
+  padding: 10px 15px;
+  color: rgba(234, 248, 255, 0.86);
+  font-family: "Chakra Petch", "Noto Sans SC", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 0 34px color-mix(in srgb, var(--planet-accent) 22%, transparent);
+  transform: translateX(-50%);
+  animation: focusStatusReveal 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  backdrop-filter: blur(18px);
+}
+
+.orbital-cinema.is-planet-view .deep-space-field {
+  opacity: 0.45;
+}
+
+.orbital-cinema.is-planet-view .cinema-copy {
+  animation: none;
+  opacity: 0.012;
+  transform: translateX(-42px) scale(0.9);
+  pointer-events: none;
+}
+
+.orbital-cinema.is-planet-view .planet-dossier {
+  border: 1px solid rgba(139, 199, 218, 0.34);
+  border-radius: 42px;
+  background:
+    radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--planet-accent) 22%, transparent), transparent 28%),
+    radial-gradient(circle at 0% 28%, rgba(80, 179, 255, 0.16), transparent 42%),
+    linear-gradient(155deg, rgba(12, 34, 52, 0.78), rgba(3, 12, 22, 0.95) 48%, rgba(1, 6, 14, 0.9));
+  width: clamp(380px, 28vw, 468px);
+  padding: 26px;
+  box-shadow:
+    0 0 0 1px rgba(130, 215, 255, 0.06),
+    -28px 0 80px rgba(29, 132, 224, 0.18),
+    0 24px 90px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 42px rgba(83, 169, 255, 0.08);
+  transform: translateX(0);
+}
+
+.orbital-cinema.is-planet-view .dossier-header {
+  padding-bottom: 22px;
+}
+
+.orbital-cinema.is-planet-view .dossier-header h2 {
+  font-size: clamp(3.05rem, 3.9vw, 4.35rem);
+}
+
+.orbital-cinema.is-planet-view .dossier-header p {
+  font-size: 0.94rem;
+}
+
+.orbital-cinema.is-planet-view .metric-table dt,
+.orbital-cinema.is-planet-view .status-table dt {
+  font-size: 0.84rem;
+}
+
+.orbital-cinema.is-planet-view .metric-table dd,
+.orbital-cinema.is-planet-view .status-table dd {
+  font-size: 0.94rem;
+}
+
+.orbital-cinema.is-planet-view .metric-table div,
+.orbital-cinema.is-planet-view .status-table div {
+  min-height: 34px;
+  padding: 0 28px;
+}
+
+.orbital-cinema.is-planet-view .dossier-cta {
+  min-height: 30px;
+  margin-top: 22px;
+}
+
+.orbital-cinema.is-planet-view .planet-dossier::before {
+  opacity: 0.96;
+}
+
+.orbital-cinema.is-planet-view .planet-dossier.is-collapsed {
+  top: 24vh;
+  right: clamp(40px, 4vw, 76px);
+  bottom: auto;
+  width: 54px;
+  height: 178px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  overflow: visible;
+  transform: none;
+}
+
+.orbital-cinema.is-planet-view .planet-dossier.is-collapsed::before {
+  inset: 2px auto 2px 18px;
+  width: 2px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, transparent, rgba(92, 190, 255, 0.48), rgba(202, 240, 255, 0.76), rgba(92, 190, 255, 0.52), transparent);
+  opacity: 0.86;
+  animation: none;
+}
+
+.orbital-cinema.is-planet-view .planet-dossier.is-collapsed::after {
+  top: 50px;
+  right: 10px;
+  bottom: auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--planet-accent) 60%, #82d7ff);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--planet-accent) 45%, transparent);
+}
+
+.orbital-cinema.is-planet-view .planet-dossier.is-collapsed .dossier-collapse-toggle {
+  right: auto;
+  left: 0;
+  clip-path: polygon(100% 0, 100% 100%, 34% 80%, 0 66%, 0 34%, 34% 20%);
+}
+
+.orbital-cinema.is-planet-view .planet-console {
+  opacity: 0.4;
+  transform: translateY(8px);
+}
+
+.orbital-cinema.is-planet-view .active-caption {
+  opacity: 0;
+}
+
+.accessibility-summary {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@keyframes copyReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes focusOrbitBreath {
+  0%,
+  100% {
+    opacity: 0.58;
+  }
+
+  50% {
+    opacity: 0.92;
+  }
+}
+
+@keyframes focusAtmosphereBreath {
+  0%,
+  100% {
+    opacity: 0.62;
+  }
+
+  50% {
+    opacity: 0.84;
+  }
+}
+
+@keyframes dossierGlassBreath {
+  0%,
+  100% {
+    opacity: 0.28;
+  }
+
+  50% {
+    opacity: 0.52;
+  }
+}
+
+@keyframes panelContentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes navLightSweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-70%);
+  }
+
+  28% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(70%);
+  }
+}
+
+@keyframes captionSignal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes focusStatusReveal {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes focusLensSweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-12%) scale(1.04);
+  }
+
+  22% {
+    opacity: 0.78;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(10%) scale(1);
+  }
+}
+
+@keyframes planetSwitchFlare {
+  0% {
+    opacity: 0;
+  }
+
+  32% {
+    opacity: 0.56;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+@media (max-width: 1280px) {
+  .system-scene {
+    inset: 0 -28vw 0 12vw;
+  }
+
+  .cinema-copy {
+    width: min(540px, 45vw);
+  }
+
+  .planet-dossier,
+  .control-deck {
+    width: 330px;
+  }
+
+  .planet-strip button {
+    padding-inline: 12px;
+  }
+
+  .planet-thumb {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (max-width: 1040px) {
+  .topbar-readout {
+    display: none;
+  }
+
+  .cinema-topbar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .cinema-copy {
+    top: 14vh;
+    width: min(520px, calc(100vw - 400px));
+  }
+
+  .planet-dossier {
+    top: 16vh;
+    width: 318px;
+  }
+
+  .control-deck {
+    top: 104px;
+    right: 350px;
+    width: 300px;
+  }
+
+  .planet-strip {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .planet-strip button {
+    min-width: 166px;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 860px) {
+  html,
+  body {
+    height: 100%;
+    overflow: visible;
+    overscroll-behavior: none;
+  }
+
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .orbital-cinema {
+    height: 100dvh;
+    min-height: 100dvh;
+    overflow: hidden;
+    overscroll-behavior: none;
+    padding: 14px 14px 96px;
+    touch-action: none;
+  }
+
+  .deep-space-field {
+    opacity: 1;
+    filter: saturate(1.22) contrast(1.05) brightness(0.96);
+  }
+
+  .deep-space-field::before {
+    opacity: 0.28;
+  }
+
+  .deep-space-field::after {
+    background:
+      radial-gradient(ellipse at 56% 43%, rgba(255, 178, 68, 0.16), rgba(255, 138, 48, 0.08) 18%, rgba(66, 171, 190, 0.05) 42%, transparent 66%),
+      radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(1, 4, 10, 0.22) 84%);
+    opacity: 0.52;
+  }
+
+  .cinema-vignette {
+    background:
+      linear-gradient(180deg, rgba(3, 7, 11, 0.52) 0%, rgba(3, 7, 11, 0.04) 34%, rgba(3, 7, 11, 0.5) 74%, rgba(3, 7, 11, 0.82) 100%),
+      linear-gradient(90deg, rgba(3, 7, 11, 0.54), transparent 54%, rgba(3, 7, 11, 0.38));
+  }
+
+  .system-scene {
+    inset: 54px -112vw 90px -112vw;
+    height: auto;
+    min-height: 0;
+    opacity: 1;
+    filter: saturate(1.18) contrast(1.06) brightness(1.12);
+    touch-action: none;
+  }
+
+  .system-scene.is-focus-mode {
+    inset: 58px -18vw 116px -18vw;
+    height: auto;
+    min-height: 0;
+    opacity: 1;
+    filter: saturate(1.2) contrast(1.06) brightness(1.12);
+  }
+
+  .cinema-topbar,
+  .cinema-copy,
+  .planet-dossier,
+  .control-deck,
+  .planet-console,
+  .active-caption {
+    position: relative;
+    inset: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+  }
+
+  .cinema-topbar {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    left: 14px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .cinema-mark {
+    min-width: 0;
+  }
+
+  .cinema-mark span {
+    width: 38px;
+    height: 38px;
+  }
+
+  .cinema-mark strong {
+    font-size: 0.72rem;
+  }
+
+  .cinema-mark-mobile-title {
+    display: block;
+  }
+
+  .ghost-button {
+    min-width: 42px;
+    padding: 0 12px;
+    font-size: 0;
+  }
+
+  .ghost-button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .cinema-copy {
+    display: none;
+  }
+
+  .cinema-copy h1 {
+    margin-top: 0;
+    font-size: clamp(2.05rem, 10vw, 3.35rem);
+  }
+
+  .cinema-copy h1 span + span {
+    font-size: 0.34em;
+  }
+
+  .cinema-lead {
+    display: none;
+  }
+
+  .title-rule,
+  .intro-action {
+    display: none;
+  }
+
+  .planet-dossier {
+    display: none;
+    width: 100%;
+    margin-top: 0;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .planet-insight {
+    display: none;
+  }
+
+  .control-deck {
+    width: 100%;
+    margin-top: 14px;
+  }
+
+  .planet-console {
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    z-index: 8;
+    width: auto;
+    margin-top: 0;
+  }
+
+  .planet-strip {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    min-height: 72px;
+    border-color: rgba(139, 199, 218, 0.3);
+    background: rgba(3, 10, 15, 0.78);
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .planet-strip button {
+    min-width: 124px;
+    padding: 8px 10px;
+  }
+
+  .planet-thumb {
+    width: 36px;
+    height: 36px;
+  }
+
+  .planet-strip strong {
+    font-size: 1rem;
+  }
+
+  .planet-strip small {
+    font-size: 0.68rem;
+  }
+
+  .console-hints {
+    display: none;
+  }
+
+  .console-hints span {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .active-caption {
+    width: 100%;
+    justify-content: center;
+    margin-top: 14px;
+    padding-bottom: 4px;
+    font-size: 0.72rem;
+  }
+
+  .focus-status {
+    position: fixed;
+    top: 66px;
+    right: 16px;
+    left: 16px;
+    justify-content: center;
+    max-width: calc(100vw - 32px);
+    font-size: 0.65rem;
+    text-align: center;
+    transform: none;
+    animation: captionSignal 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .orbital-cinema.is-planet-view .cinema-copy {
+    display: none;
+  }
+
+  .orbital-cinema.is-planet-view .planet-console {
+    opacity: 0.86;
+    transform: none;
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier {
+    display: grid;
+    position: fixed;
+    top: min(132px, 15dvh);
+    right: 12px;
+    bottom: calc(92px + env(safe-area-inset-bottom));
+    left: 12px;
+    z-index: 14;
+    width: auto;
+    max-height: none;
+    margin: 0;
+    overflow: hidden;
+    overscroll-behavior: contain;
+    padding: 34px 16px 16px;
+    border: 1px solid rgba(139, 199, 218, 0.22);
+    border-radius: 22px 22px 18px 18px;
+    background:
+      radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--planet-accent) 16%, transparent), transparent 36%),
+      linear-gradient(180deg, rgba(7, 18, 24, 0.9), rgba(2, 7, 12, 0.96) 58%, rgba(1, 4, 9, 0.92));
+    box-shadow:
+      0 -18px 54px rgba(0, 0, 0, 0.34),
+      inset 0 1px 0 rgba(255, 226, 168, 0.14),
+      inset 0 0 0 1px rgba(130, 215, 255, 0.06);
+    backdrop-filter: blur(22px) saturate(1.16);
+    -webkit-backdrop-filter: blur(22px) saturate(1.16);
+    touch-action: pan-y;
+    transform: none;
+    transition:
+      top 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      bottom 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      height 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 260ms ease;
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier.is-peek {
+    top: auto;
+    height: min(42dvh, 360px);
+    touch-action: none;
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier.is-full {
+    top: min(132px, 15dvh);
+    height: auto;
+    touch-action: pan-y;
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier::before {
+    top: 0;
+    right: 24px;
+    bottom: auto;
+    left: 24px;
+    width: auto;
+    height: 1px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba(255, 218, 134, 0.72), rgba(130, 215, 255, 0.5), transparent);
+    opacity: 0.86;
+    animation: none;
+    box-shadow: 0 0 18px rgba(228, 170, 88, 0.18);
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier::after {
+    display: none;
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier .dossier-content {
+    max-height: calc(100dvh - min(132px, 15dvh) - 132px - env(safe-area-inset-bottom));
+    overflow: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 0 2px 0 0;
+    padding-right: 2px;
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier.is-peek .dossier-content {
+    max-height: calc(min(42dvh, 360px) - 54px);
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier.is-full .dossier-content {
+    overflow: auto;
+    pointer-events: auto;
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier .dossier-collapse-toggle {
+    top: 1px;
+    right: auto;
+    left: 50%;
+    z-index: 16;
+    width: 58px;
+    min-height: 27px;
+    border: 1px solid rgba(255, 226, 168, 0.24);
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at 50% 10%, rgba(255, 233, 181, 0.24), transparent 58%),
+      rgba(5, 15, 22, 0.72);
+    clip-path: none;
+    pointer-events: auto;
+    box-shadow:
+      0 0 24px rgba(228, 170, 88, 0.22),
+      inset 0 0 0 1px rgba(130, 215, 255, 0.08);
+    transform: translate(-50%, -50%);
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier .dossier-collapse-toggle:hover {
+    transform: translate(-50%, -52%);
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier.is-collapsed {
+    top: auto;
+    right: auto;
+    bottom: calc(76px + env(safe-area-inset-bottom));
+    left: 50%;
+    width: 126px;
+    height: 34px;
+    max-height: none;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    overflow: visible;
+    transform: translateX(-50%);
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier.is-collapsed::before,
+  .orbital-cinema.is-planet-view .planet-dossier.is-collapsed::after {
+    display: none;
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier.is-collapsed .dossier-collapse-toggle {
+    top: 50%;
+    right: auto;
+    left: 50%;
+    width: 64px;
+    min-height: 28px;
+    padding: 0;
+    border-color: rgba(255, 226, 168, 0.3);
+    background:
+      radial-gradient(circle at 50% 12%, rgba(255, 225, 164, 0.26), transparent 58%),
+      linear-gradient(180deg, rgba(13, 32, 40, 0.7), rgba(4, 10, 15, 0.78));
+    clip-path: none;
+    transform: translate(-50%, -50%);
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier.is-full .dossier-collapse-toggle::before {
+    border-top: 7px solid rgba(255, 225, 164, 0.92);
+    border-right: 6px solid transparent;
+    border-bottom: 0;
+    border-left: 6px solid transparent;
+    transform: translateY(1px);
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier.is-peek .dossier-collapse-toggle::before,
+  .orbital-cinema.is-planet-view .planet-dossier.is-collapsed .dossier-collapse-toggle::before {
+    border-top: 0;
+    border-right: 6px solid transparent;
+    border-bottom: 7px solid rgba(255, 225, 164, 0.92);
+    border-left: 6px solid transparent;
+    transform: translateY(-1px);
+  }
+
+  .orbital-cinema.is-dossier-peek .system-scene.is-focus-mode {
+    inset: 58px -14vw calc(92px + min(42dvh, 360px)) -14vw;
+  }
+
+  .orbital-cinema.is-dossier-collapsed .system-scene.is-focus-mode {
+    inset: 58px -14vw 122px -14vw;
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier .dossier-section:nth-of-type(3),
+  .orbital-cinema.is-planet-view .planet-insight {
+    display: block;
+  }
+
+  .orbital-cinema.is-planet-view .planet-dossier.is-peek .dossier-section + .dossier-section,
+  .orbital-cinema.is-planet-view .planet-dossier.is-peek .planet-insight {
+    display: none;
+  }
+
+  .orbital-cinema.is-planet-view .dossier-header {
+    min-height: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .orbital-cinema.is-planet-view .dossier-planet-preview {
+    width: 58px;
+  }
+
+  .orbital-cinema.is-planet-view .dossier-header h2 {
+    font-size: 1.58rem;
+  }
+
+  .orbital-cinema.is-planet-view .dossier-header strong {
+    margin-top: 6px;
+    font-size: 0.82rem;
+  }
+
+  .orbital-cinema.is-planet-view .dossier-header p {
+    font-size: 0.76rem;
+  }
+
+  .orbital-cinema.is-planet-view .dossier-section {
+    margin-top: 8px;
+  }
+
+  .orbital-cinema.is-planet-view .dossier-cta {
+    display: none;
+  }
+
+  .mobile-orbit-radar {
+    display: none;
+  }
+
+  .radar-core,
+  .radar-dot {
+    position: absolute;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .radar-core {
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    color: #ffb14a;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 16px rgba(255, 167, 55, 0.78);
+  }
+
+  .radar-dot {
+    top: var(--radar-y);
+    left: var(--radar-x);
+    width: 6px;
+    height: 6px;
+    color: var(--planet-accent);
+    opacity: 0.72;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--planet-accent) 70%, transparent);
+  }
+
+  .radar-core.is-active,
+  .radar-dot.is-active {
+    opacity: 1;
+    outline: 1px solid rgba(244, 235, 220, 0.86);
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 520px) {
+  .cinema-copy {
+    margin-top: 55svh;
+  }
+
+  .cinema-copy h1 {
+    font-size: clamp(1.9rem, 9.6vw, 3rem);
+  }
+
+  .title-rule {
+    margin-top: 24px;
+  }
+
+  .cinema-lead {
+    max-width: 290px;
+    line-height: 1.78;
+  }
+
+  .planet-dossier {
+    padding: 12px;
+  }
+
+  .dossier-header h2 {
+    font-size: 1.9rem;
+  }
+
+  .orbital-cinema.is-planet-view .dossier-header h2 {
+    font-size: 1.52rem;
+  }
+
+  .orbital-cinema.is-planet-view .dossier-header p,
+  .orbital-cinema.is-planet-view .metric-table dt,
+  .orbital-cinema.is-planet-view .status-table dt,
+  .orbital-cinema.is-planet-view .metric-table dd,
+  .orbital-cinema.is-planet-view .status-table dd {
+    font-size: 0.72rem;
+  }
+
+  .metric-table div,
+  .status-table div {
+    min-height: 28px;
+  }
+
+  .orbital-cinema.is-planet-view .metric-table div,
+  .orbital-cinema.is-planet-view .status-table div {
+    min-height: 23px;
+  }
+
+  .planet-strip button {
+    min-width: 146px;
+  }
+
+  .planet-thumb {
+    width: 38px;
+    height: 38px;
+  }
+
+  .speed-control {
+    grid-template-columns: 1fr auto;
+    padding: 10px 12px;
+  }
+
+  .speed-control input {
+    grid-column: 1 / -1;
+  }
+}
