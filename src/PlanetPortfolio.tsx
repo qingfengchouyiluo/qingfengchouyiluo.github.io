@@ -318,6 +318,10 @@ export function PlanetPortfolio() {
     }
 
     setDossierSheetMode((current) => {
+      if (!isMobileViewport()) {
+        return current === 'collapsed' ? 'peek' : 'collapsed';
+      }
+
       if (current === 'collapsed') {
         return 'peek';
       }

@@ -463,14 +463,14 @@ a {
   -webkit-backdrop-filter: blur(24px) saturate(1.16);
   isolation: isolate;
   scrollbar-width: none;
+  contain: layout style;
+  transform: translateX(0);
+  will-change: transform, opacity;
   transition:
-    visibility 520ms ease,
-    opacity 520ms ease,
-    transform 520ms ease,
-    border-color 520ms ease,
-    background 520ms ease,
-    width 420ms cubic-bezier(0.16, 1, 0.3, 1),
-    height 420ms cubic-bezier(0.16, 1, 0.3, 1);
+    visibility 360ms ease,
+    opacity 360ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms ease;
 }
 
 .orbital-cinema:not(.is-planet-view) .planet-dossier {
@@ -621,18 +621,13 @@ a {
 }
 
 .planet-dossier.is-collapsed {
-  top: 24vh;
-  right: clamp(40px, 4vw, 76px);
-  bottom: auto;
-  width: 54px;
-  height: 178px;
-  padding: 0;
-  border: 0;
   overflow: visible;
+  border-color: transparent;
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
-  transform: none;
+  -webkit-backdrop-filter: none;
+  transform: translateX(calc(100% + clamp(36px, 4.8vw, 82px) - 4px));
 }
 
 .planet-dossier.is-collapsed::before {
@@ -663,7 +658,7 @@ a {
 .planet-dossier.is-collapsed .dossier-collapse-toggle {
   top: 50%;
   right: auto;
-  left: 0;
+  left: -48px;
   width: 42px;
   min-height: 112px;
   padding: 0;
@@ -1272,18 +1267,13 @@ a {
 }
 
 .orbital-cinema.is-planet-view .planet-dossier.is-collapsed {
-  top: 24vh;
-  right: clamp(40px, 4vw, 76px);
-  bottom: auto;
-  width: 54px;
-  height: 178px;
-  padding: 0;
-  border: 0;
+  overflow: visible;
+  border-color: transparent;
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
-  overflow: visible;
-  transform: none;
+  -webkit-backdrop-filter: none;
+  transform: translateX(calc(100% + clamp(36px, 4.8vw, 82px) - 4px));
 }
 
 .orbital-cinema.is-planet-view .planet-dossier.is-collapsed::before {
@@ -1309,7 +1299,7 @@ a {
 
 .orbital-cinema.is-planet-view .planet-dossier.is-collapsed .dossier-collapse-toggle {
   right: auto;
-  left: 0;
+  left: -48px;
   clip-path: polygon(100% 0, 100% 100%, 34% 80%, 0 66%, 0 34%, 34% 20%);
 }
 
