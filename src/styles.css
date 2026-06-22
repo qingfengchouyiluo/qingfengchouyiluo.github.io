@@ -1321,7 +1321,10 @@ a {
 }
 
 .orbital-cinema.is-planet-view .active-caption {
+  visibility: hidden;
   opacity: 0;
+  pointer-events: none;
+  animation: none;
 }
 
 .accessibility-summary {
