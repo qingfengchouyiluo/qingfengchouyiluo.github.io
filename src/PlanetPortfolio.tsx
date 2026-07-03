@@ -105,6 +105,7 @@ export function PlanetPortfolio() {
   const [showLabels, setShowLabels] = useState(true);
   const [showOrbits, setShowOrbits] = useState(true);
   const [isTouring, setIsTouring] = useState(false);
+  const [isMotionPaused, setIsMotionPaused] = useState(false);
   const [isPlanetView, setIsPlanetView] = useState(false);
   const [dossierSheetMode, setDossierSheetMode] = useState<DossierSheetMode>('peek');
   const [switchPulse, setSwitchPulse] = useState(0);
@@ -147,6 +148,7 @@ export function PlanetPortfolio() {
   const isDossierCollapsed = dossierSheetMode === 'collapsed';
   const isDossierFull = dossierSheetMode === 'full';
   const dossierSheetClass = isPlanetView ? `is-${dossierSheetMode}` : '';
+  const sceneSpeed = isMotionPaused ? 0 : speed;
 
   const updateView = (nextView: SpaceView, render = true) => {
     viewRef.current = nextView;
@@ -223,7 +225,7 @@ export function PlanetPortfolio() {
   }, [activePlanetId]);
 
   useEffect(() => {
-    if (!isTouring) {
+    if (!isTouring || isMotionPaused) {
       return undefined;
     }
 
@@ -237,7 +239,7 @@ export function PlanetPortfolio() {
     }, 4300);
 
     return () => window.clearInterval(intervalId);
-  }, [isTouring]);
+  }, [isMotionPaused, isTouring]);
 
   const enterFocusCamera = () => {
     updateView({
@@ -279,6 +281,9 @@ export function PlanetPortfolio() {
   const setMode = (mode: SceneMode) => {
     setSceneMode(mode);
     setIsTouring(mode === '漫游');
+    if (mode === '漫游') {
+      setIsMotionPaused(false);
+    }
     setIsPlanetView(false);
     setDossierSheetMode('peek');
     if (mode === '讲解') {
@@ -301,6 +306,7 @@ export function PlanetPortfolio() {
 
   const resetView = () => {
     setIsTouring(false);
+    setIsMotionPaused(false);
     setIsPlanetView(false);
     setDossierSheetMode('peek');
     setSceneMode('观测');
@@ -556,7 +562,7 @@ export function PlanetPortfolio() {
           planets={planets}
           showLabels={showLabels}
           showOrbits={showOrbits}
-          speed={speed}
+          speed={sceneSpeed}
           view={view}
           viewRef={viewRef}
         />
@@ -575,21 +581,22 @@ export function PlanetPortfolio() {
         <p className="cinema-lead">在引力的诗篇中，八颗行星，八段旅程。用交互、镜头与轨道秩序，探索深空的层次与浪漫。</p>
         <div className="intro-action" data-interactive="true">
           <button
-            aria-label={isTouring ? '暂停自动漫游' : '开始自动漫游'}
-            aria-pressed={isTouring}
+            aria-label={isMotionPaused ? '继续星体运动' : '暂停星体运动'}
+            aria-pressed={!isMotionPaused}
             className="play-button"
             onClick={() => {
-              setSceneMode(isTouring ? '观测' : '漫游');
+              setSceneMode('观测');
               setIsPlanetView(false);
-              setIsTouring((current) => !current);
+              setIsTouring(false);
+              setIsMotionPaused((current) => !current);
             }}
             type="button"
           >
-            {isTouring ? <Pause size={21} fill="currentColor" /> : <Play size={21} fill="currentColor" />}
+            {isMotionPaused ? <Play size={21} fill="currentColor" /> : <Pause size={21} fill="currentColor" />}
           </button>
           <div>
-            <strong>{isTouring ? '暂停漫游' : '自动漫游'}</strong>
-            <span>{isTouring ? '正在巡航' : '轻触巡航'}</span>
+            <strong>{isMotionPaused ? '继续运动' : '暂停运动'}</strong>
+            <span>{isMotionPaused ? '当前已暂停' : '星体运转中'}</span>
           </div>
         </div>
       </section>

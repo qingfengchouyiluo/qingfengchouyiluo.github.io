@@ -1318,6 +1318,8 @@ function PlanetNode({
   const bodyRef = useRef<THREE.Group>(null);
   const meshRef = useRef<THREE.Mesh>(null);
   const haloRef = useRef<THREE.Mesh>(null);
+  const motionTimeRef = useRef(0);
+  const spinTimeRef = useRef(0);
   const texture = usePlanetMap(planet);
   const startAngle = THREE.MathUtils.degToRad(planet.initialAngle);
   const startPosition = useMemo<[number, number, number]>(
@@ -1325,10 +1327,14 @@ function PlanetNode({
     [planet, startAngle],
   );
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock }, delta) => {
+    motionTimeRef.current += delta * speed;
+    const motionTime = motionTimeRef.current;
+    spinTimeRef.current += speed === 0 ? 0 : delta * (0.5 + speed * 0.45);
+    const spinTime = spinTimeRef.current;
     const focusActive = active && focusMode;
     const backdrop = focusMode && !active;
-    const angle = THREE.MathUtils.degToRad(planet.initialAngle) + clock.elapsedTime * getCompressedAngularVelocity(planet) * speed;
+    const angle = THREE.MathUtils.degToRad(planet.initialAngle) + motionTime * getCompressedAngularVelocity(planet);
     const orbitTarget = new THREE.Vector3(...getOrbitalPosition(planet, angle));
     const backdropTarget = orbitTarget.clone();
     backdropTarget.x *= 0.86;
@@ -1350,7 +1356,7 @@ function PlanetNode({
 
     if (bodyRef.current) {
       const orbitalSpin =
-        getRotationOffset(planet) + clock.elapsedTime * planet.rotationSpeed * (0.5 + speed * 0.45);
+        getRotationOffset(planet) + spinTime * planet.rotationSpeed;
       const focusBase = getBodyQuaternion(planet, getRotationOffset(planet));
       const targetQuaternion = focusActive
         ? toQuaternion(inspectRotationRef.current).multiply(focusBase)
