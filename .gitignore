@@ -6,3 +6,6 @@ dist
 *.local
 output
 outputs
+
+# Local Netlify folder
+.netlify
