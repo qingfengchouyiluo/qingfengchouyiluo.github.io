@@ -117,14 +117,14 @@ function getResponsiveCanvasDpr() {
   }
 
   if (window.innerWidth <= 860) {
-    return 1.22;
+    return 1.16;
   }
 
   if (window.innerWidth <= 1280) {
-    return 1.5;
+    return 1.4;
   }
 
-  return 1.75;
+  return 1.55;
 }
 
 function useResponsiveCanvasDpr(): [number, number] {
@@ -746,7 +746,7 @@ function createLabelTexture(planet: PlanetProfile, active: boolean) {
 
 function StarField() {
   const positions = useMemo(() => {
-    const count = 1700;
+    const count = isNarrowViewport() ? 1150 : 1450;
     const values = new Float32Array(count * 3);
 
     for (let index = 0; index < count; index += 1) {
@@ -780,7 +780,7 @@ function StarField() {
 
 function StellarDust() {
   const dustPositions = useMemo(() => {
-    const count = 780;
+    const count = isNarrowViewport() ? 460 : 620;
     const values = new Float32Array(count * 3);
 
     for (let index = 0; index < count; index += 1) {
@@ -816,7 +816,7 @@ function SolarPlasma({ focusMode }: { focusMode: boolean }) {
   const pointsRef = useRef<THREE.Points>(null);
   const materialRef = useRef<THREE.PointsMaterial>(null);
   const positions = useMemo(() => {
-    const count = 260;
+    const count = isNarrowViewport() ? 160 : 220;
     const values = new Float32Array(count * 3);
 
     for (let index = 0; index < count; index += 1) {

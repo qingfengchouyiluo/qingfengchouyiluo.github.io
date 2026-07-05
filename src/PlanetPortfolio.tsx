@@ -36,6 +36,8 @@ const defaultInspectionRotation: InspectRotation = {
   w: 1,
 };
 
+const SCENE_BOOT_DELAY_MS = 420;
+
 const selectableBodies = [solarBody, ...planets];
 
 type DossierSheetMode = 'collapsed' | 'peek' | 'full';
@@ -108,6 +110,7 @@ export function PlanetPortfolio() {
   const [isMotionPaused, setIsMotionPaused] = useState(false);
   const [isPlanetView, setIsPlanetView] = useState(false);
   const [dossierSheetMode, setDossierSheetMode] = useState<DossierSheetMode>('peek');
+  const [sceneReady, setSceneReady] = useState(false);
   const [switchPulse, setSwitchPulse] = useState(0);
   const [view, setView] = useState<SpaceView>(defaultView);
   const [inspectionRotation, setInspectionRotation] = useState<InspectRotation>(defaultInspectionRotation);
@@ -214,6 +217,14 @@ export function PlanetPortfolio() {
     },
     [],
   );
+
+  useEffect(() => {
+    const sceneTimer = window.setTimeout(() => {
+      startTransition(() => setSceneReady(true));
+    }, SCENE_BOOT_DELAY_MS);
+
+    return () => window.clearTimeout(sceneTimer);
+  }, []);
 
   useEffect(() => {
     if (previousActiveRef.current === activePlanetId) {
@@ -550,23 +561,27 @@ export function PlanetPortfolio() {
         </button>
       </nav>
 
-      <Suspense fallback={<div className="system-scene system-scene-fallback" aria-hidden="true" />}>
-        <PlanetSystemScene
-          activeId={activeBody.id}
-          dossierCollapsed={isDossierCollapsed}
-          focusPulse={switchPulse}
-          focusMode={isPlanetView}
-          inspectRotation={inspectionRotation}
-          inspectRotationRef={inspectionRotationRef}
-          onSelect={(planetId) => selectPlanet(planetId, { focus: true })}
-          planets={planets}
-          showLabels={showLabels}
-          showOrbits={showOrbits}
-          speed={sceneSpeed}
-          view={view}
-          viewRef={viewRef}
-        />
-      </Suspense>
+      {sceneReady ? (
+        <Suspense fallback={<div className="system-scene system-scene-fallback" aria-hidden="true" />}>
+          <PlanetSystemScene
+            activeId={activeBody.id}
+            dossierCollapsed={isDossierCollapsed}
+            focusPulse={switchPulse}
+            focusMode={isPlanetView}
+            inspectRotation={inspectionRotation}
+            inspectRotationRef={inspectionRotationRef}
+            onSelect={(planetId) => selectPlanet(planetId, { focus: true })}
+            planets={planets}
+            showLabels={showLabels}
+            showOrbits={showOrbits}
+            speed={sceneSpeed}
+            view={view}
+            viewRef={viewRef}
+          />
+        </Suspense>
+      ) : (
+        <div className="system-scene system-scene-fallback" aria-hidden="true" />
+      )}
 
       <section className="cinema-copy" id="top">
         <p className="cinema-eyebrow">ORBITAL CINEMA</p>
